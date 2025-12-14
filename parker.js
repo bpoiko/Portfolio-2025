@@ -3,7 +3,7 @@ console.log("Hello world");
 let text = "Welcome to my portfolio!";
 let i = 0;
 
-let text2 = "I'm a Sophomore Computer Science student at Sacramento State University. Thank you for taking your time to learn a bit more about me";
+let text2 = "I'm a Junior Computer Science student at Sacramento State University. Thank you for taking your time to learn a bit more about me";
 let i2 = 0;
 
 function typeWriter() {
