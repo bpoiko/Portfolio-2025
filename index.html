@@ -2,69 +2,343 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Welcome!</title>
-  <meta name="description" content="Braylon Parker current portfolio.">
-  <script type="text/javascript" src="parker.js"></script>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Braylon Parker</title>
+  <meta name="description" content="Braylon Parker is a computer science student at Sacramento State and a systems software engineer intern at Intel, working toward GPU and ML systems engineering.">
+  <meta name="theme-color" content="#fff8e5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#101014" media="(prefers-color-scheme: dark)">
+  <meta name="color-scheme" content="light dark">
+  <script>
+    try {
+      var saved = localStorage.getItem("theme");
+      if (saved === "dark" || saved === "light") {
+        document.documentElement.dataset.theme = saved;
+      } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        document.documentElement.dataset.theme = "dark";
+      }
+    } catch (err) {}
+  </script>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230a0a0a'/%3E%3Crect x='7' y='7' width='18' height='18' fill='%23c6ff3a'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
 </head>
+<body>
+  <a class="skip" href="#content">Skip to content</a>
 
-<body class="bg-black text-white font-sans min-h-screen flex items-center justify-center">
-  <main class="max-w-3xl text-center px-4">
-    <h1 id="typed" class="text-4xl font-bold mb-6"></h1>
-    <h2 class="text-2xl font-semibold mb-4">About me: </h2>
-    <p id="babble" class="text-lg mb-6">
-      
-    </p>
-
-    
-    <a href="parkerres26.pdf" class="bg-green-500 hover:text-blue-500 "download class="btn">Download My Resume!</a>
-    
-    <p class="mb-6">
-      I work with many different systems, languages, and anything that can expand my horizons in life, I've loved every second learning about different topics in my education.
-    </p>
-     <h2 class="font-bold clear-left">Projects</h2>
-     <h3><a class="font-bold"href="https://code2code-hazel.vercel.app/">Code2Code</a> - Full-Stack AI coding challenge generator(and starter programming information), frontend hosted on Vercel, backend hosted on Render</h3>
-     <p class="text-left font-bold">Skills and Frameworks used: React, Express.JS, Node.JS, JavaScript, CSS, HTML, OpenAI API, Render, Vercel </p>
-     <br>
-    <h3 class="text-left"> <a class="font-bold" href="https://github.com/bpoiko/parker-miniplayer/releases/tag/v1.0.0"> Parker MiniPlayer </a>- Lightweight mini  web browser for following coding tutorials, possibly watching content while doing other things on your desktop, currently always on top!</h3>
-      <p class="text-left font-bold">Skills and Frameworks used: Electron, JavaScript, CSS, HTML </p>
-    <br>
-    <br>
-    <br>
-    <h2 class="font-semibold ">Contact Me @ </h2>
-    <p class=""><a href="mailto:parkerworks42@gmail.com">parkerworks42@gmail.com</a></p>
-    <a href="https://github.com/bpoiko" target="_blank">
-       <div id="arrow" class="absolute animate-pulse w-23 h-23">
-        =====>
+  <div class="ticker" role="region" aria-label="Recent records">
+    <div class="tape" id="tape">
+      <div class="tape-track">
+      <p class="tape-group">
+        <span><b>∆</b> 2026-06 · Intel · systems software engineer intern · current</span>
+        <span><b>∆</b> 2025-10 · Sacramento State · software engineer intern · completed</span>
+        <span><b>∆</b> 2025-09 · College of ECS · student dean assistant · completed</span>
+        <span><b>∆</b> personal · local LLM stack · vLLM · WSL2</span>
+        <span><b>∆</b> personal · Code2Code · React · Firebase</span>
+        <span><b>∆</b> learning · mlsys · GPU and ML systems practice</span>
+        <span><b>∆</b> 2028-05 · Sacramento State · B.S. computer science · expected</span>
+      </p>
+      <p class="tape-group" aria-hidden="true">
+        <span><b>∆</b> 2026-06 · Intel · systems software engineer intern · current</span>
+        <span><b>∆</b> 2025-10 · Sacramento State · software engineer intern · completed</span>
+        <span><b>∆</b> 2025-09 · College of ECS · student dean assistant · completed</span>
+        <span><b>∆</b> personal · local LLM stack · vLLM · WSL2</span>
+        <span><b>∆</b> personal · Code2Code · React · Firebase</span>
+        <span><b>∆</b> learning · mlsys · GPU and ML systems practice</span>
+        <span><b>∆</b> 2028-05 · Sacramento State · B.S. computer science · expected</span>
+      </p>
+      </div>
     </div>
-      <button class="bg-purple-700 hover:bg-red-800 text-white font-semibold py-2 px-4 rounded transition duration-300">
-        View My GitHub
-      </button>
-    </a>
-    <a href="https://www.linkedin.com/in/braylon-parker-383750327" target="_blank">
-        <button class="bg-blue-500 hover:bg-yellow-400 text-white font-semibold py-2 px-4 rounded transition duration-300">
-            View My LinkedIn
-        </button>
+    <button type="button" class="ticker-toggle" id="ticker-toggle" aria-pressed="false">Pause</button>
+  </div>
 
-    </a>
-    <br>
-    <br>
-    <br>
+  <div class="ledger">
+    <header class="mast">
+      <div class="grid" aria-hidden="true"></div>
+      <svg class="marks" aria-hidden="true" viewBox="0 0 800 220">
+        <g fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="610" cy="48" r="16"></circle>
+          <path d="M610 22 V38 M610 58 V74 M584 48 H600 M620 48 H636"></path>
+          <path d="M690 150 H734 M718 132 V168"></path>
+          <path d="M140 170 l18 -18 l18 18"></path>
+        </g>
+      </svg>
+      <div class="mast-top">
+        <div>
+          <p class="kicker">Computer science · Systems software</p>
+          <h1>Braylon Parker</h1>
+          <p class="mast-role">Systems software engineer intern · Sacramento State</p>
+        </div>
+        <div class="mast-actions">
+          <button type="button" class="chip-btn" id="theme-toggle" aria-pressed="false">Light</button>
+        </div>
+      </div>
+      <nav class="index" aria-label="Sections">
+        <ul class="nav-list">
+          <li><a href="#overview"><i class="swatch swatch-ink" aria-hidden="true"></i>Overview</a></li>
+          <li><a href="#work"><i class="swatch swatch-lime" aria-hidden="true"></i>Work</a></li>
+          <li><a href="#projects"><i class="swatch swatch-cobalt" aria-hidden="true"></i>Projects</a></li>
+          <li><a href="#education"><i class="swatch swatch-yellow" aria-hidden="true"></i>Education</a></li>
+          <li><a href="#contact"><i class="swatch swatch-magenta" aria-hidden="true"></i>Contact</a></li>
+        </ul>
+      </nav>
+    </header>
 
-    <label for="degreeprog">Degree Progress:</label>
-    <progress id="degreeprog" max="120" value="63">48%</progress>
+    <main id="content" class="sheet">
+      <section id="overview" aria-labelledby="overview-heading">
+        <p class="form-id">Form BP-00 · Index of records</p>
+        <h2 id="overview-heading">Overview</h2>
+        <p class="lede">Working toward GPU and ML systems engineering, where computer architecture meets machine learning.</p>
+        <p>I study computer science at Sacramento State and work as a systems software engineer intern at Intel. The direction I want is the layer between hardware and machine-learning systems.</p>
+        <p class="note">Practice for that path is in <a href="https://github.com/bpoiko/mlsys">mlsys</a>, a personal learning repository. It is study, separate from my internships.</p>
+        <dl class="facts">
+          <div>
+            <dt>Role</dt>
+            <dd>Systems Software Engineer Intern, Intel</dd>
+          </div>
+          <div>
+            <dt>Since</dt>
+            <dd><time datetime="2026-06">June 2026</time></dd>
+          </div>
+          <div>
+            <dt>School</dt>
+            <dd>B.S. Computer Science, Sacramento State</dd>
+          </div>
+          <div>
+            <dt>Expected</dt>
+            <dd><time datetime="2028-05">May 2028</time></dd>
+          </div>
+        </dl>
+      </section>
 
-    <br>
-    <br>
-    <section>
-      <h3 class="">Programming Languages</h3>
-      <img src="https://cdn.simpleicons.org/github" class="pulse"alt="GitHub" width="40" height="40">
-      <img src="https://cdn.simpleicons.org/python" class="pulse" alt="Python" width="40" height="40">
-      <img src="https://cdn.simpleicons.org/javascript" class="pulse" alt="JavaScript" width="40" height="40">
-      <img src="https://upload.wikimedia.org/wikipedia/en/3/30/Java_programming_language_logo.svg" class="pulse" alt="Java Logo" height="30" width="30">
-    </section>
+      <hr class="rule">
 
-  </main>
+      <section id="work" aria-labelledby="work-heading">
+        <p class="form-id">Form BP-01 · Roles</p>
+        <h2 id="work-heading">Work</h2>
+
+        <article class="record record-live">
+          <p class="record-id">W-01</p>
+          <svg class="clip" viewBox="0 0 40 64" aria-hidden="true">
+            <path d="M26 6c-7 0-12 5-12 12v26c0 5 4 9 9 9s9-4 9-9V20c0-3-2-5-4.5-5S23 17 23 20v22" fill="none" stroke="#c6ff3a" stroke-width="3.5" stroke-linecap="round"></path>
+          </svg>
+          <div class="record-head">
+            <h3>Systems Software Engineer Intern</h3>
+            <p class="org">Intel</p>
+            <p class="status">Current</p>
+          </div>
+          <div class="record-body">
+            <p class="when"><time datetime="2026-06">June 2026</time> – Present</p>
+            <ul>
+              <li>Build Python and PowerShell automation for post-silicon validation and platform setup, and co-lead Linux AI GPU benchmarking.</li>
+              <li>Turned manual setups that took 20+ minutes into one-click workflows.</li>
+              <li>Automate LLM inference benchmarks that measure time to first token, prefill, latency, and memory, comparing integrated and discrete GPUs.</li>
+            </ul>
+            <ul class="tags" aria-label="Tools in this role">
+              <li>Python</li>
+              <li>PowerShell</li>
+              <li>Linux</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="record record-done">
+          <p class="record-id">W-02</p>
+          <div class="record-head">
+            <h3>Software Engineer Intern</h3>
+            <p class="org">California State University, Sacramento</p>
+            <p class="status">Completed</p>
+          </div>
+          <div class="record-body">
+            <p class="when"><time datetime="2025-10">October 2025</time> – <time datetime="2026-05">May 2026</time></p>
+            <ul>
+              <li>Built a Python and Pandas scheduling and student-placement automation system that reduced schedulers’ manual workload by 88%.</li>
+              <li>The system covers 5,000+ students and thousands of course sections.</li>
+              <li>Designed the object-oriented architecture and data-mapping workflows, and worked with faculty on requirements, Figma wireframes, and iterative improvements.</li>
+            </ul>
+            <ul class="tags" aria-label="Tools in this role">
+              <li>Python</li>
+              <li>Pandas</li>
+              <li>Figma</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="record record-done">
+          <p class="record-id">W-03</p>
+          <div class="record-head">
+            <h3>Student Dean Assistant</h3>
+            <p class="org">College of Engineering and Computer Science, Sacramento State</p>
+            <p class="status">Completed</p>
+          </div>
+          <div class="record-body">
+            <p class="when"><time datetime="2025-09">September 2025</time> – <time datetime="2025-12">December 2025</time></p>
+          </div>
+        </article>
+      </section>
+
+      <hr class="rule">
+
+      <section id="projects" aria-labelledby="projects-heading">
+        <p class="form-id">Form BP-02 · Things built and studied</p>
+        <h2 id="projects-heading">Projects</h2>
+
+        <article class="record record-live">
+          <p class="record-id">P-01</p>
+          <div class="record-head">
+            <h3>Local LLM inference stack</h3>
+            <p class="org">Personal · vLLM · WSL2 · Hermes Agent</p>
+            <p class="status">Personal</p>
+          </div>
+          <div class="record-body">
+            <p>Run and benchmark dense and Mixture-of-Experts models with vLLM on an RTX 5070 Ti under WSL2, with a secondary Apple M4 Pro setup. Integrated vLLM with agent harnesses, including Hermes Agent, and wrote custom agent skills for tool-using, multi-step workflows.</p>
+          </div>
+        </article>
+
+        <article class="record record-done">
+          <p class="record-id">P-02</p>
+          <div class="record-head">
+            <h3>Code2Code</h3>
+            <p class="org">Personal</p>
+            <p class="status">Personal</p>
+          </div>
+          <div class="record-body">
+            <p>Built a full-stack AI-powered coding challenge generator using React, Firebase, and OpenAI models, with an Express API. The frontend is deployed on Vercel and the API on Render.</p>
+            <p class="record-links">
+              <a href="https://code2code-hazel.vercel.app/">Live site</a>
+              <a href="https://github.com/bpoiko/code2code">Source</a>
+            </p>
+          </div>
+        </article>
+
+        <article class="record record-paper">
+          <p class="record-id">P-03</p>
+          <div class="record-head">
+            <h3>Parker MiniPlayer</h3>
+            <p class="org">Personal · Electron</p>
+            <p class="status">Personal</p>
+          </div>
+          <div class="record-body">
+            <p>A small Electron app with an always-on-top window for following coding tutorials beside other desktop work.</p>
+            <p class="record-links">
+              <a href="https://github.com/bpoiko/parker-miniplayer/releases/tag/v1.0.0">Release v1.0.0</a>
+              <a href="https://github.com/bpoiko/parker-miniplayer">Source</a>
+            </p>
+            <ul class="tags" aria-label="Stack">
+              <li>Electron</li>
+              <li>JavaScript</li>
+              <li>HTML</li>
+              <li>CSS</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="record record-study">
+          <p class="record-id">P-04</p>
+          <div class="record-head">
+            <h3>mlsys</h3>
+            <p class="org">Learning repository</p>
+            <p class="status">Study</p>
+          </div>
+          <div class="record-body">
+            <p>A personal learning repository for GPU and ML systems practice. It is study, separate from internship work.</p>
+            <p class="record-links">
+              <a href="https://github.com/bpoiko/mlsys">github.com/bpoiko/mlsys</a>
+            </p>
+          </div>
+        </article>
+      </section>
+
+      <hr class="rule">
+
+      <section id="education" aria-labelledby="education-heading">
+        <p class="form-id">Form BP-03 · Degree</p>
+        <h2 id="education-heading">Education</h2>
+
+        <article class="record record-paper">
+          <p class="record-id">E-01</p>
+          <div class="record-head">
+            <h3>California State University, Sacramento</h3>
+            <p class="org">B.S. Computer Science, minor in Mathematics</p>
+            <p class="status">Expected</p>
+          </div>
+          <div class="record-body">
+            <p class="when">Expected <time datetime="2028-05">May 2028</time></p>
+            <ul>
+              <li>GPA 3.6. Three-time Dean’s Honor List.</li>
+              <li>Conditionally admitted to the blended B.S./M.S. program. Graduate coursework is planned for Spring 2027, and the M.S. is expected in Fall 2029.</li>
+            </ul>
+          </div>
+        </article>
+
+        <div class="skills" id="skills">
+          <h3>Skills</h3>
+          <div class="skill-grid">
+            <section aria-labelledby="skill-languages">
+              <h4 id="skill-languages">Languages</h4>
+              <ul class="tags">
+                <li>Python</li>
+                <li>JavaScript</li>
+                <li>Java</li>
+                <li>SQL</li>
+                <li>C and C++, basic</li>
+              </ul>
+            </section>
+            <section aria-labelledby="skill-tools">
+              <h4 id="skill-tools">Tools</h4>
+              <ul class="tags">
+                <li>Pandas</li>
+                <li>PowerShell</li>
+                <li>Linux and WSL2</li>
+                <li>Git and GitHub</li>
+                <li>vLLM, PyTorch, and OpenVINO</li>
+                <li>React, Firebase, and Figma</li>
+              </ul>
+            </section>
+            <section aria-labelledby="skill-areas">
+              <h4 id="skill-areas">Areas</h4>
+              <ul class="tags">
+                <li>Validation and workflow automation</li>
+                <li>Data processing</li>
+                <li>LLM inference benchmarking</li>
+              </ul>
+            </section>
+          </div>
+        </div>
+      </section>
+
+      <hr class="rule">
+
+      <section id="contact" aria-labelledby="contact-heading">
+        <p class="form-id">Form BP-04 · Reach me</p>
+        <h2 id="contact-heading">Contact</h2>
+        <p>Email is the direct line. A current resume is available on request.</p>
+        <ul class="contact-links">
+          <li>
+            <a href="mailto:parkerworks42@gmail.com">
+              <span>Email</span>
+              <span>parkerworks42@gmail.com</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/bpoiko" rel="me">
+              <span>GitHub</span>
+              <span>github.com/bpoiko</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/in/braylon-parker-383750327" rel="me">
+              <span>LinkedIn</span>
+              <span>braylon-parker</span>
+            </a>
+          </li>
+        </ul>
+      </section>
+    </main>
+  </div>
+
+  <footer class="colophon">
+    <p>Braylon Parker</p>
+    <a href="#overview">Back to top</a>
+  </footer>
+  <script src="site.js"></script>
 </body>
 </html>
